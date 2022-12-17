@@ -12,6 +12,23 @@ public class Car {
     private String regNumber;
     private final int numberOfSeats;
     private boolean summerTires;
+    public static class Key {
+        private final boolean remoteStart;
+        private final boolean keylessAccess;
+
+        public Key(boolean remoteStart, boolean keylessAccess) {
+            this.remoteStart = remoteStart;
+            this.keylessAccess = keylessAccess;
+        }
+
+        public boolean isRemoteStart() {
+            return remoteStart;
+        }
+
+        public boolean isKeylessAccess() {
+            return keylessAccess;
+        }
+    }
 
 
 
