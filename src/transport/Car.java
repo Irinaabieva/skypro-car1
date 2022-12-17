@@ -3,13 +3,8 @@ package transport;
 import java.time.LocalDate;
 import java.util.Locale;
 
-public class Car {
-    private final String brand;
-    private final String model;
+public class Car extends Transport {
     private double engineVolume;
-    private String color;
-    private final int year;
-    private final String country;
     private String transmission;
     private final String bodyType;
     private String regNumber;
@@ -92,32 +87,9 @@ public class Car {
                String regNumber,
                int numberOfSeats,
                boolean summerTires) {
-        if (brand == null) {
-            this.brand = "default";
-        } else {
-            this.brand = brand;
-        }
-        if (model.isEmpty()) {
-            this.model = "default";
-        } else {
-            this.model = model;
-        }
+        super(brand,model,color,year,country);
+
        setEngineVolume(engineVolume);
-        if (color == null || color.isEmpty()) {
-            this.color = "Белый";
-        } else {
-            this.color = color;
-        }
-        if (year <= 0) {
-            this.year = 2000;
-        } else {
-            this.year = year;
-        }
-        if (country == null) {
-            this.country = "default";
-        } else {
-            this.country = country;
-        }
         setTransmission(transmission);
 
         if (bodyType != null && bodyType.isEmpty()) {
@@ -139,29 +111,17 @@ public class Car {
 
     }
 
-    public String getBrand() {
-        return brand;
-    }
 
-    public String getModel() {
-        return model;
-    }
+
+
 
     public double getEngineVolume() {
         return engineVolume;
     }
 
-    public String getColor() {
-        return color;
-    }
 
-    public int getYear() {
-        return year;
-    }
 
-    public String getCountry() {
-        return country;
-    }
+
 
     public String getBodyType() {
         return bodyType;
@@ -179,9 +139,6 @@ public class Car {
         }
     }
 
-    public void setColor(String color) {
-        this.color = color;
-    }
 
     public String getTransmission() {
         return transmission;
@@ -233,12 +190,12 @@ public class Car {
     @Override
     public String toString() {
         return "Автомобиль: " +
-                "Марки = " + brand +
-                ", модель " + model +
+                "Марки = " + getBrand() +
+                ", модель " + getModel() +
                 ", объем двигателя " + engineVolume +
-                ", цвет " + color +
-                ", год " + year +
-                ", страна " + country +
+                ", цвет " + getColor() +
+                ", год " + getYear() +
+                ", страна " + getCountry() +
                 ", коробка передач " + transmission +
                 ", тип кузова " +  bodyType +
                 ", регистрационный номер " + regNumber +

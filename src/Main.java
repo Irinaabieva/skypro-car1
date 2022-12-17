@@ -1,3 +1,4 @@
+import transport.Bus;
 import transport.Car;
 
 public class Main {
@@ -8,6 +9,10 @@ public class Main {
         Car kia = new Car("Kia", "Sportage 4-го поколения", 2.4, "красный", 2018, "Южная Корея","автомат","Хетчбэк","A241TT15",4,true);
         Car hyundai = new Car("Hyundai", "Avante", 1.6, "оранжевый", 2016, "Южная Корея","механическия","Хетчбэк","A141EE15",4,true);
         printCar(lada);
+
+        Bus ikarus = new Bus("ikarus", "f35", "Желтый", 2020, "Швеция");
+
+        System.out.println(ikarus.toString());
     }
     public static void printCar(Car car) {
         System.out.println(car.toString());
