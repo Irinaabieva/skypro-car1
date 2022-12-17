@@ -1,5 +1,8 @@
 package transport;
 
+import java.time.LocalDate;
+import java.util.Locale;
+
 public class Car {
     private final String brand;
     private final String model;
@@ -27,6 +30,52 @@ public class Car {
 
         public boolean isKeylessAccess() {
             return keylessAccess;
+        }
+        public static class Insurance {
+            private final LocalDate validity;
+            private final int cost;
+            private final String number;
+
+            public Insurance(LocalDate validity, int cost, String number) {
+                if (validity == null) {
+                    validity = LocalDate.now().plusDays(365);
+                }
+                this.validity = validity;
+                if (cost <= 0) {
+                    cost = 10_000;
+                }
+                this.cost = cost;
+                if (number == null || number.isEmpty()) {
+                    number = "XXXYYYZZZ";
+                }
+                this.number = number;
+            }
+            public void printCheckExpired() {
+                boolean isExpired = validity.isAfter(LocalDate.now());
+                if (isExpired) {
+                    System.out.println("Надо менять страховку");
+                }
+            }
+
+            public void printCheckNumber() {
+                boolean correct = number.length() == 9;
+                if (!correct) {
+                    System.out.println("Номер введен некорректно");
+                }
+
+            }
+
+            public LocalDate getValidity() {
+                return validity;
+            }
+
+            public int getCost() {
+                return cost;
+            }
+
+            public String getNumber() {
+                return number;
+            }
         }
     }
 
