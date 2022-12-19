@@ -3,19 +3,34 @@ package transport;
 import java.time.LocalDate;
 import java.util.Locale;
 
-public class Car extends Transport {
+public class Car extends Transport implements Competing {
     public Car(String brand, String model, double engineVolume) {
         super(brand, model, engineVolume);
     }
 
     @Override
     public void startMoving() {
-        System.out.println("Движение легкового автомобиля началось");
+        System.out.println("Автомобиль \"" + getBrand() + "\" (\"" + getModel() + "\") начал движение");
     }
 
     @Override
     public void endMoving() {
-        System.out.println("Движение легкового автомобиля закончилось");
+        System.out.println("Автомобиль \"" + getBrand() + "\" (\"" + getModel() + "\") закончил движение");
+    }
+
+    @Override
+    public void pitStop() {
+        System.out.println("Автомобиль прошел питстоп");
+    }
+
+    @Override
+    public int bestLapTime() {
+        return (int)(Math.random()* 5);
+    }
+
+    @Override
+    public int maxSpeed() {
+        return (int) (Math.random() * 200);
     }
     //    private double engineVolume;
 //    private String transmission;

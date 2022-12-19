@@ -18,7 +18,8 @@ public class Main {
         Truck truck2 = new Truck("truck2", "m2", 5.0);
         Truck truck3 = new Truck("truck3", "m3", 5.0);
         Truck truck4 = new Truck("truck4", "m4", 5.0);
-
+        truck2.pitStop();
+        bus2.pitStop();
 
 
 //        Car lada = new Car("Lada", "Granta", 1.7, "Желтый", 2015, "Россия","механическия","Хетчбэк","A141TT15",4,true);
