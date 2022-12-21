@@ -2,8 +2,19 @@ package transport;
 
 public class Truck  extends Transport implements Competing {
 
-    public Truck(String brand, String model, double engineVolume) {
+    private Weight weight;
+
+    public Truck(String brand, String model, double engineVolume, Weight weight) {
         super(brand, model, engineVolume);
+        this.weight = weight;
+    }
+
+    public Weight getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Weight weight) {
+        this.weight = weight;
     }
 
     @Override
@@ -14,6 +25,17 @@ public class Truck  extends Transport implements Competing {
     @Override
     public void endMoving() {
         System.out.println("Грузовик \"" + getBrand() + "\" (\"" + getModel() + "\") закончил движение");
+    }
+
+    @Override
+    public void printType() {
+        if (weight == null) {
+            System.out.println("Данных по авто недостаточно");
+        }else {
+            String from = weight.getFrom() == null ? "" : "от " + weight.getFrom() + " ";
+            String to = weight.getTo() == null ? "" : "до " + weight.getTo() + " ";
+            System.out.println("Грузоподъемность авто: от " + from + to);
+        }
     }
 
     @Override
