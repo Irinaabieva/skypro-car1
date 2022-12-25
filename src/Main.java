@@ -24,6 +24,21 @@ public class Main {
         printInfo(driverB,audi);
     }
 
+    private static void service(Transport... transports) {
+        for (Transport transport : transports) {
+            serviceTransport(transport);
+        }
+    }
+    private static void serviceTransport(Transport transport) {
+        try {
+            if (!transport.service()) {
+                throw new RuntimeException("Автомобиль " + transport.getBrand() + " " + transport.getModel() + "не прошел диагностику");
+            }
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     private static void printInfo(Driver<?> driver, Transport transport) {
         transport.printType();
     }
