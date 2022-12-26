@@ -1,11 +1,14 @@
 package transport;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class Car extends Transport implements Competing {
 
     private TypeOfBody typeOfBody;
+    private List<Transport> listTransports;
 
     public Car(String brand, String model, double engineVolume, TypeOfBody typeOfBody) {
         super(brand, model, engineVolume);
@@ -44,6 +47,11 @@ public class Car extends Transport implements Competing {
     @Override
     public boolean service() {
         return Math.random() > 0.7;
+    }
+
+    @Override
+    public void repair() {
+        System.out.println("Машина " + getBrand() + " " + getModel() + " почимена!");
     }
 
     @Override

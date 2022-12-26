@@ -1,8 +1,12 @@
 package transport;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Truck  extends Transport implements Competing {
 
     private Weight weight;
+    private List<Transport> listTransports;
 
     public Truck(String brand, String model, double engineVolume, Weight weight) {
         super(brand, model, engineVolume);
@@ -36,6 +40,11 @@ public class Truck  extends Transport implements Competing {
             String to = weight.getTo() == null ? "" : "до " + weight.getTo() + " ";
             System.out.println("Грузоподъемность авто: от " + from + to);
         }
+    }
+
+    @Override
+    public void repair() {
+        System.out.println("Грузовик " + getBrand() + " " + getModel() + " почимен!");
     }
 
     @Override

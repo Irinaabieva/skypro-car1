@@ -1,5 +1,10 @@
 package transport;
 
+import driver.Driver;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public abstract class  Transport{
@@ -8,6 +13,10 @@ public abstract class  Transport{
     private  String model;
 
     private  double engineVolume;
+    private final List<Driver<?>> drivers = new ArrayList<>();
+
+    private final List<Mechanic<?>> mechanics = new ArrayList<>();
+    private final List<Sponsor> sponsors = new ArrayList<>();
 
 
     public Transport(String brand, String model,double engineVolume) {
@@ -45,12 +54,33 @@ public abstract class  Transport{
         return model;
     }
 
+    public List<Driver<?>> getDrivers() {
+        return drivers;
+    }
+
+    public List<Mechanic<?>> getMechanics() {
+        return mechanics;
+    }
+
+    public List<Sponsor> getSponsors() {
+        return sponsors;
+    }
+
     public void setBrand(String brand) {
         if (brand == null || brand.isEmpty()) {
             this.brand = "Информация не указана";
         } else {
             this.brand = brand;
         }
+    }
+    public void addDriver(Driver<?>... drivers) {
+        this.drivers.addAll(Arrays.asList(drivers));
+    }
+    public void addMechanic(Mechanic<?>... mechanics) {
+        this.mechanics.addAll(Arrays.asList(mechanics));
+    }
+    public void addSponsor(Sponsor... sponsors) {
+        this.sponsors.addAll(Arrays.asList(sponsors));
     }
 
     public void setModel(String model) {
@@ -90,4 +120,6 @@ public abstract class  Transport{
     public int hashCode() {
         return Objects.hash(brand, model, engineVolume);
     }
+
+    public abstract void repair();
 }

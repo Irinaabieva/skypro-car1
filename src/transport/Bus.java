@@ -1,7 +1,11 @@
 package transport;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Bus extends Transport implements Competing {
     private Capacity capacity;
+    private List<Transport> listTransports;
 
     public Bus(String brand, String model, double engineVolume, Capacity capacity) {
         super(brand, model, engineVolume);
@@ -46,6 +50,10 @@ public class Bus extends Transport implements Competing {
 
     }
 
+    @Override
+    public void repair() {
+        System.out.println("Автобус " + getBrand() + " " + getModel() + " почимен!");
+    }
     @Override
     public void startMoving() {
         System.out.println("Автобус \"" + getBrand() + "\" (\"" + getModel() + "\") начал движение");
