@@ -2,10 +2,7 @@ package transport;
 
 import driver.Driver;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public abstract class  Transport{
     private  String brand;
@@ -15,7 +12,7 @@ public abstract class  Transport{
     private  double engineVolume;
     private final List<Driver<?>> drivers = new ArrayList<>();
 
-    private final List<Mechanic<?>> mechanics = new ArrayList<>();
+    private final Set<Mechanic<?>> mechanics = new HashSet<>();
     private final List<Sponsor> sponsors = new ArrayList<>();
 
 
@@ -58,7 +55,7 @@ public abstract class  Transport{
         return drivers;
     }
 
-    public List<Mechanic<?>> getMechanics() {
+    public Set<Mechanic<?>> getMechanics() {
         return mechanics;
     }
 

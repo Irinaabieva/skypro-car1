@@ -22,7 +22,7 @@ public class Main {
         Car kia = new Car("Kia", "Sportage 4-го поколения", 2.4,TypeOfBody.MINIVAN);
 
         kia.addDriver(new DriverB("Иван иванович", true,10));
-        kia.addMechanic(petr);
+        kia.addMechanic(petr, alexey,alexey);
         kia.addSponsor(lucoil,michelin);
 
         Bus ikarus = new Bus("ikarus", "f35", 3.6, Capacity.LARGE);
