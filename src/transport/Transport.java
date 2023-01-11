@@ -110,12 +110,12 @@ public abstract class  Transport{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Transport transport = (Transport) o;
-        return Double.compare(transport.engineVolume, engineVolume) == 0 && Objects.equals(brand, transport.brand) && Objects.equals(model, transport.model);
+        return Double.compare(transport.engineVolume, engineVolume) == 0 && brand.equals(transport.brand) && model.equals(transport.model) && drivers.equals(transport.drivers) && mechanics.equals(transport.mechanics) && sponsors.equals(transport.sponsors);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(brand, model, engineVolume);
+        return Objects.hash(brand, model, engineVolume, drivers, mechanics, sponsors);
     }
 
     public abstract void repair();

@@ -5,16 +5,21 @@ import driver.DriverD;
 import jdk.jfr.Category;
 import transport.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class Main {
     public static void main(String[] args) {
 
+
+
         Mechanic<Car> petr = new Mechanic<>("Петр", "Петров", "Pirelli");
         Mechanic<Transport> alexey = new Mechanic<>("Алексей", "Петров", "Pirelli");
         Sponsor lucoil = new Sponsor("Лукойл", 2_000_000);
         Sponsor michelin = new Sponsor("Michelin", 3_000_000);
+
 
         Car lada = new Car("Лада", "Granta", 1.6, TypeOfBody.MINIVAN);
         Car audi = new Car("Audi", "A8", 3.0,TypeOfBody.CROSSOVER);
@@ -22,7 +27,6 @@ public class Main {
         Car kia = new Car("Kia", "Sportage 4-го поколения", 2.4,TypeOfBody.MINIVAN);
 
         kia.addDriver(new DriverB("Иван иванович", true,10));
-        kia.addMechanic(petr, alexey,alexey);
         kia.addSponsor(lucoil,michelin);
 
         Bus ikarus = new Bus("ikarus", "f35", 3.6, Capacity.LARGE);
@@ -41,18 +45,25 @@ public class Main {
         truck1.addMechanic(alexey);
         truck1.addSponsor(michelin);
 
-        Truck truck2 = new Truck("truck2", "m2", 5.0,Weight.N3);
-        Truck truck3 = new Truck("truck3", "m3", 5.0,Weight.N2);
-        Truck truck4 = new Truck("truck4", "m4", 5.0,Weight.N1);
-        DriverB driverB = new DriverB("Иван иванович", true,10);
+        Map<Transport,Mechanic<?>> mechanicMap = new HashMap<>();
+        mechanicMap.put(kia, petr);
+        mechanicMap.put(ikarus, alexey);
+        mechanicMap.put(truck1, alexey);
+        System.out.println(mechanicMap.get(ikarus));
+
+
+//        Truck truck2 = new Truck("truck2", "m2", 5.0,Weight.N3);
+//        Truck truck3 = new Truck("truck3", "m3", 5.0,Weight.N2);
+//        Truck truck4 = new Truck("truck4", "m4", 5.0,Weight.N1);
+//        DriverB driverB = new DriverB("Иван иванович", true,10);
 
 
 
-        List<Transport> transports = List.of(kia, ikarus, truck1);
-
-        for (Transport transport : transports) {
-            printInfo(transport);
-        }
+//        List<Transport> transports = List.of(kia, ikarus, truck1);
+//
+//        for (Transport transport : transports) {
+//            printInfo(transport);
+//        }
     }
 
     private static void printInfo(Transport transport) {
